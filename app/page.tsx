@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { lookupTin, loadTinData } from "@/lib/tin-lookup";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Search,
   ShieldAlert,
@@ -109,15 +110,18 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <a
-            href="https://nbr.gov.bd"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border/60 hover:border-border bg-background/50"
-          >
-            nbr.gov.bd
-            <ExternalLink className="size-3" />
-          </a>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <a
+              href="https://nbr.gov.bd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border/60 hover:border-border bg-background/50"
+            >
+              nbr.gov.bd
+              <ExternalLink className="size-3" />
+            </a>
+          </div>
         </div>
       </header>
 
