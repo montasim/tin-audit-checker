@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,21 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NBR Audit Selection 2023-24 — TIN Checker",
+  title: "TIN Audit List Checker — Assessment Year 2023–24",
   description:
-    "Instantly check if your TIN is among the 72,342 returns selected for NBR Risk-Based Audit (Assessment Year 2023-24).",
+    "Check whether a 12-digit TIN appears in the NBR-published risk-based audit selection list for assessment year 2023–24.",
   authors: [{ name: "TIN Checker" }],
   openGraph: {
-    title: "NBR Audit Selection 2023-24 — TIN Checker",
+    title: "TIN Audit List Checker — Assessment Year 2023–24",
     description:
-      "Instant offline TIN lookup against the official NBR audit selection list.",
+      "Private, on-device lookup against the NBR-published audit selection list.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "NBR Audit Selection 2023-24 — TIN Checker",
+    title: "TIN Audit List Checker — Assessment Year 2023–24",
     description:
-      "Instant offline TIN lookup against the official NBR audit selection list.",
+      "Private, on-device lookup against the NBR-published audit selection list.",
   },
 };
 
@@ -38,14 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
