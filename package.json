@@ -1,6 +1,21 @@
 {
   "name": "tin-checker",
   "version": "0.1.0",
+  "description": "Check if your Bangladesh TIN is selected for NBR Risk-Based Audit (AY 2023-24). Client-side, private, instant lookup of 72,342 returns.",
+  "keywords": [
+    "income-tax",
+    "assessment-year-2023-24",
+    "bangladesh-tax",
+    "bangladesh-tin",
+    "nbr-audit",
+    "risk-based-audit",
+    "tax-return-audit",
+    "tin-checker",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
