@@ -69,7 +69,7 @@ Important provenance limits:
 
 ### Prerequisites
 
-- Node.js 20 or newer
+- Node.js 20.9.0 or newer
 - pnpm
 
 ### Run locally
