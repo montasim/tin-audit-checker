@@ -1,21 +1,21 @@
 # TIN Audit List Checker
 
-Check whether a Bangladesh Taxpayer Identification Number appears in the National Board of Revenue's published risk-based audit selection list for assessment year 2023–24.
+Check whether a Bangladesh Taxpayer Identification Number appears in a maintainer-supplied historical list described as Bangladesh risk-based audit selections for assessment year 2023–24.
 
 <p>
   <a href="https://tin-audit-checker.netlify.app"><img alt="Open live app" src="https://img.shields.io/badge/Live_app-Netlify-00C7B7?logo=netlify&logoColor=white"></a>
   <a href="https://www.supportkori.com/montasim"><img alt="Support on SupportKori" src="https://img.shields.io/badge/Support-SupportKori-FFDD00"></a>
 </p>
 
-The checker searches 72,342 published records across 49 tax zones and returns the matching zone and circle when available. The lookup happens entirely in the browser: there is no account, analytics tracker, or server submission of the entered TIN.
+The checker searches 72,342 bundled records across 49 tax zones and returns the matching zone and circle when available. The lookup happens entirely in the browser: there is no account, analytics tracker, or server submission of the entered TIN.
 
-**[Open the checker](https://tin-audit-checker.netlify.app) · [Verify with NBR](https://nbr.gov.bd/) · [Report an application bug](https://github.com/montasim/tin-audit-checker/issues)**
+**[Open the checker](https://tin-audit-checker.netlify.app) · [Ask NBR to verify a result](https://nbr.gov.bd/) · [Report an application bug](https://github.com/montasim/tin-audit-checker/issues)**
 
-> **Dataset status:** This is a historical lookup for assessment year 2023–24, not a live NBR status service. The repository contains the normalized lookup data but does not contain the original NBR publication or a reproducible import script; independently verify consequential results with NBR.
+> **Unverified provenance:** The maintainer describes this as a historical assessment-year 2023–24 NBR audit-selection list, but the repository contains no original publication, authoritative source URL, acquisition record, importer, or redistribution-rights evidence. Treat both the attribution and every result as unverified until NBR or the relevant tax circle confirms them.
 
 ## Why this exists
 
-The source list is useful but inconvenient to search manually. This project turns the published data into a focused, mobile-friendly lookup while keeping a sensitive identifier on the user's device.
+The bundled list is inconvenient to search manually. This project turns that snapshot into a focused, mobile-friendly lookup while keeping the entered identifier on the user's device. It improves lookup usability; it does not establish the dataset's origin, accuracy, or legal status.
 
 ## Features
 
@@ -31,7 +31,7 @@ The source list is useful but inconvenient to search manually. This project turn
 1. Open the [live checker](https://tin-audit-checker.netlify.app).
 2. Enter the 12-digit TIN you want to check.
 3. Review the match state and, when present, the tax zone and circle.
-4. Confirm the result through the [NBR website](https://nbr.gov.bd/) or the listed tax circle before taking action.
+4. Ask NBR or the listed tax circle to confirm both the source list and the current result before taking action.
 
 The app normalizes formatting characters before searching. It does not tell you why a return was selected, whether an audit is still active, or the taxpayer's broader compliance status.
 
@@ -39,20 +39,21 @@ The app normalizes formatting characters before searching. It does not tell you 
 
 - The application downloads `public/tin-data.json` and searches it on the device.
 - Entered TINs are not sent to an application server or stored by this project.
-- A result only describes the published list for assessment year 2023–24.
+- A result only describes the bundled snapshot labeled as assessment year 2023–24.
 - “Not found” does not guarantee a person's current tax or audit status.
 - This is an independent tool, not an official NBR service. Verify important decisions with the [National Board of Revenue](https://nbr.gov.bd/) or the relevant tax circle.
 
-Because the dataset itself is public and shipped to every browser, this privacy model protects the lookup query—not the contents of the source list.
+Because the deployment ships the dataset file to every browser, its contents are retrievable from the deployed site. This privacy model protects the entered lookup query from application-server submission; it does not make the bundled records private or establish permission to republish them.
 
 ## Data source and methodology
 
-The bundled file represents an NBR-published risk-based audit selection list for assessment year 2023–24. The repository normalizes entries into compact TIN, zone-index, and circle fields, then builds in-memory `Set` and `Map` indexes after the browser loads the JSON file.
+The maintainer describes the bundled file as an NBR risk-based audit selection list for assessment year 2023–24. That attribution is not independently verifiable from this repository. The application stores entries as compact TIN, zone-index, and circle fields, then builds in-memory `Set` and `Map` indexes after the browser loads the JSON file; this runtime indexing is visible in code, but the earlier collection and normalization process is undocumented.
 
 Important provenance limits:
 
-- The repository does not include the original NBR publication or a source URL for that exact document.
-- It does not include a reproducible import script that derives `public/tin-data.json` from the publication.
+- The repository does not include the claimed original NBR publication, an authoritative source URL, acquisition date, or chain-of-custody evidence.
+- It does not include a reproducible import script that derives `public/tin-data.json` from source material.
+- It does not establish that the records were public at collection time or that redistribution is permitted.
 - A match therefore needs confirmation with NBR or the named tax circle before it informs a legal, tax, or financial decision.
 - Dataset replacement should include the original source, acquisition date, assessment year, row count, normalization process, and validation evidence.
 
@@ -109,14 +110,14 @@ The lookup route fetches the static JSON once per browser session, caches it in 
 
 ## Deployment
 
-The production instance runs at [tin-audit-checker.netlify.app](https://tin-audit-checker.netlify.app). The application has no required environment variables or server-side data service; a production build bundles the interface and serves the public JSON lookup file. Run `pnpm lint` and `pnpm build` before deployment.
+The production instance runs at [tin-audit-checker.netlify.app](https://tin-audit-checker.netlify.app). The application has no required environment variables or server-side data service; a production build bundles the interface and serves the browser-delivered JSON lookup file. Run `pnpm lint` and `pnpm build` before deployment.
 
 ## Project status and limitations
 
 - This is a historical assessment-year lookup, not a live audit-status integration.
 - “Not found” means only that the normalized value is absent from this bundled snapshot.
 - The tool cannot explain selection reasons, audit progress, later notices, or current compliance status.
-- Static hosting keeps submitted queries away from an application server, but the public dataset itself is downloadable.
+- Static hosting keeps submitted queries away from an application server, but the bundled dataset is downloadable from the deployment.
 - The repository has no automated tests, CI workflow, dedicated security policy, contribution guide, code of conduct, or license file.
 - No repository-owned production screenshot is available; the verified live deployment is the primary visual proof.
 
@@ -142,7 +143,7 @@ pnpm lint
 pnpm build
 ```
 
-Do not include additional taxpayer information or replace the dataset without documenting its public source, scope, and assessment year.
+Do not include additional taxpayer information or replace the dataset without documenting its authoritative source, acquisition evidence, redistribution rights, scope, assessment year, normalization, and validation.
 
 ## Support and security
 
