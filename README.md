@@ -9,8 +9,6 @@ Check whether a Bangladesh Taxpayer Identification Number appears in the Nationa
 
 The checker searches 72,342 published records across 49 tax zones and returns the matching zone and circle when available. The lookup happens entirely in the browser: there is no account, analytics tracker, or server submission of the entered TIN.
 
-[Check a TIN in the live app](https://tin-audit-checker.netlify.app)
-
 **[Open the checker](https://tin-audit-checker.netlify.app) · [Verify with NBR](https://nbr.gov.bd/) · [Report an application bug](https://github.com/montasim/tin-audit-checker/issues)**
 
 > **Dataset status:** This is a historical lookup for assessment year 2023–24, not a live NBR status service. The repository contains the normalized lookup data but does not contain the original NBR publication or a reproducible import script; independently verify consequential results with NBR.
@@ -130,6 +128,10 @@ The production instance runs at [tin-audit-checker.netlify.app](https://tin-audi
 | `lib/tin-lookup.ts` | Dataset loading, normalization, indexing, and lookup |
 | `public/tin-data.json` | Bundled historical TIN, zone, and circle data |
 | `components/` | Theme provider and reusable interface controls |
+
+## Documentation
+
+This README is currently the canonical product, data, setup, and operational documentation. The repository does not include separate API or architecture documents because the application has no submission API and its lookup boundary is contained in `lib/tin-lookup.ts`.
 
 ## Contributing
 
