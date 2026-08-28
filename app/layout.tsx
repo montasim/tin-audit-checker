@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,7 +39,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          id="support-kori-widget"
+          src="https://www.supportkori.com/widget.js"
+          data-id="montasim"
+          data-message="Support montasim"
+          data-color="#FFDD00"
+          data-position="right"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
